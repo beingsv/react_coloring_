@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [Clicked, setClicked] = useState(false);
+
+    function Click() {
+        setClicked(!Clicked);
+    };
+
+    let bgColor;
+    let btnText;
+
+    if (Clicked) {
+        bgColor = '#BACA18';
+        btnText = 'Again !!';
+    }
+    else {
+        bgColor = '#E4836E';
+        btnText = 'Click Me';
+    }
+    return (
+        <div className="main" style={{backgroundColor: bgColor}}>
+            <h1>Click this button to change the Color!!</h1>
+            <button style={{ backgroundColor: Clicked ? '#E4836E' : '#BACA18', }} onClick={Click}>
+              {btnText}
+            </button>
+        </div>
+    );
+};
 
 export default App;
